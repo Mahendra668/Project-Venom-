@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahendra Tools Hub - Free Online Developer & Utility Tools</title>
+    <meta name="description" content="A collection of free online tools including PDF converters, image compressors, developer utilities, and text tools.">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- FileSaver for downloading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header" onclick="closeTool()" style="cursor: pointer;">
+                <i class="fa-solid fa-toolbox"></i>
+                <span>Tools Hub</span>
+            </div>
+            <nav class="sidebar-nav" id="sidebarNav">
+                <div class="nav-item active" data-category="All">
+                    <i class="fa-solid fa-border-all"></i> <span>All Tools</span>
+                </div>
+                <div class="nav-item" data-category="Favorites">
+                    <i class="fa-solid fa-star"></i> <span>Favorites</span>
+                </div>
+                <div class="nav-item" data-category="Recent">
+                    <i class="fa-solid fa-clock-rotate-left"></i> <span>Recently Used</span>
+                </div>
+                <div class="nav-item" data-category="File & Document Tools">
+                    <i class="fa-solid fa-file-pdf"></i> <span>File & Document</span>
+                </div>
+                <div class="nav-item" data-category="Image Tools">
+                    <i class="fa-solid fa-image"></i> <span>Image Tools</span>
+                </div>
+                <div class="nav-item" data-category="Text Productivity Tools">
+                    <i class="fa-solid fa-font"></i> <span>Text Productivity</span>
+                </div>
+                <div class="nav-item" data-category="Developer Tools">
+                    <i class="fa-solid fa-code"></i> <span>Developer Tools</span>
+                </div>
+                <div class="nav-item" data-category="Everyday Utility Tools">
+                    <i class="fa-solid fa-wrench"></i> <span>Everyday Utility</span>
+                </div>
+                <div class="nav-item" data-category="AI-Inspired Tools">
+                    <i class="fa-solid fa-robot"></i> <span>AI-Inspired Tools</span>
+                </div>
+            </nav>
+        </aside>
+        
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Main Wrapper -->
+        <div class="main-wrapper">
+            <!-- Topbar -->
+            <header class="topbar">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                
+                <div class="search-container">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search for tools (e.g., PDF to Word, Base64)...">
+                </div>
+                
+                <div class="topbar-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="content">
+                <!-- Home Section -->
+                <div id="homeSection">
+                    <section class="hero">
+                        <h1>Welcome to Mahendra Tools Hub</h1>
+                        <p>Your all-in-one dashboard for free, fast, and secure online tools. Convert PDFs, compress images, format code, and more directly in your browser.</p>
+                    </section>
+                    
+                    <div id="popularSection">
+                        <h2 class="section-title"><i class="fa-solid fa-star" style="color: #fbbf24;"></i> Popular Tools</h2>
+                        <div class="tools-grid" id="popularToolsGrid"></div>
+                    </div>
+
+                    <h2 class="section-title" id="categoryTitle"><i class="fa-solid fa-border-all"></i> All Tools</h2>
+                    <div class="tools-grid" id="allToolsGrid"></div>
+                </div>
+
+                <!-- Tool Interface Section -->
+                <div id="toolSection" style="display: none;">
+                    <div class="tool-header">
+                        <button class="back-btn" onclick="closeTool()">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <div>
+                            <h2 id="toolTitle" style="font-size: 1.5rem; margin-bottom: 0.25rem;">Tool Name</h2>
+                            <p id="toolDescription" style="color: var(--text-secondary);">Tool description goes here.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-workspace" id="toolInterface">
+                        <!-- Tool specific UI will be injected here -->
+                    </div>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <footer style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: left; padding: 3rem 2rem;">
+                <div>
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-toolbox"></i> Mahendra Tools Hub</h3>
+                    <p style="font-size: 0.875rem;">Your all-in-one personal toolbox for everyday online utilities. Fast, secure, and free.</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Categories</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem;">
+                        <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">PDF Tools</a></li>
+                        <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">Image Tools</a></li>
+                        <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Contact</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem;">
+                        <li><a href="#" style="color: var(--text-secondary); text-decoration: none;"><i class="fa-solid fa-envelope"></i> mahendraprasath668@gmail.com</a></li>
+                        <li><a href="https://github.com/Mahendra668" target="_blank" style="color: var(--text-secondary); text-decoration: none;"><i class="fa-brands fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+                <div style="grid-column: 1 / -1; text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                    <p>&copy; 2026 Mahendra Tools Hub. All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
